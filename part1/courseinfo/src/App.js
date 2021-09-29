@@ -1,4 +1,11 @@
 import React from 'react'
+const Part = (props) => {
+  return (
+    <>
+    <p>{props.part} {props.exercises}</p>
+    </>
+  )
+}
 const Header = (props) => {
   return (
     <h1>{props.course}</h1>
@@ -7,7 +14,9 @@ const Header = (props) => {
 const Content = (props) => {
   return (
     <>
-    <p>{props.part} {props.num}</p>
+    <Part part={props.part1} exercises={props.exercises1}/>
+    <Part part={props.part2} exercises={props.exercises2}/>
+    <Part part={props.part3} exercises={props.exercises3}/>
     </>
   )
 }
@@ -30,9 +39,10 @@ const App = () => {
   return (
     <div>
       <Header course={course}/>
-      <Content part={part1} num={exercises1}/>
-      <Content part={part2} num={exercises2}/>
-      <Content part={part3} num={exercises3}/>
+      <Content part1={part1} exercises1={exercises1}
+               part2={part2} exercises2={exercises2}
+               part3={part3} exercises3={exercises3}
+      />
       <Total total={exercises1 + exercises2 + exercises3}/>
     </div>
   )
