@@ -12,19 +12,22 @@ const Header = (props) => {
   )
 }
 const Content = (props) => {
+  const [part1, part2, part3] = props.parts
   return (
     <>
-    <Part part={props.part1}/>
-    <Part part={props.part2}/>
-    <Part part={props.part3}/>
+    <Part part={part1}/>
+    <Part part={part2}/>
+    <Part part={part3}/>
     </>
   )
 }
 
 const Total = (props) => {
+  const [part1, part2, part3] = props.parts
+  const total = part1.exercises + part2.exercises + part3.exercises
   return (
     <>
-    <p>Number of exercises {props.total}</p>
+    <p>Number of exercises {total}</p>
     </>
   )
 }
@@ -44,12 +47,11 @@ const App = () => {
       exercises: 14
     }
   ]
-  const [part1, part2, part3] = parts
   return (
     <div>
-    <Header course={course}/>
-    <Content part1={part1} part2={part2} part3={part3}/>
-    <Total total={part1.exercises + part2.exercises + part3.exercises}/>
+      <Header course={course} />
+      <Content parts={parts} />
+      <Total parts={parts} />
     </div>
   )
 }
