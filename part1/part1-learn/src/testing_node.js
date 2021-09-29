@@ -56,3 +56,32 @@ function product(a, b) {
 const sum = (int1, int2) => {
   return int1 + int2
 }
+
+// this in object
+// I still using myself as example again
+const newTrung = {
+  name : "Trung Bui",
+  age : 19,
+  education: "Freshman",
+  greet: function() {
+    console.log("Hello, my name is " + this.name)
+  },
+  setAge: function(inputAge) {
+    this.age = inputAge
+  },
+  doAddition: function(int1, int2) {
+    console.log(int1 + int2)
+  }
+}
+newTrung.greet()
+console.log(newTrung["age"])
+newTrung.setAge(20)
+console.log(newTrung["age"])
+newTrung.doAddition(1, 2)
+// We could create a reference outside of the object to use its methods:
+const outsideAdd = newTrung.doAddition // dont use () because it is the reference not the result itself
+outsideAdd(5, 5)
+let referenceToGreet = newTrung.greet
+referenceToGreet() // this will ouput "Hello, my name is undefined" because it doesnt know what "this" is
+referenceToGreet = newTrung.greet.bind(newTrung) // This will fix it by binding the object to the function
+referenceToGreet()
